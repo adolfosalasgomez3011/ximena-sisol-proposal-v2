@@ -1,0 +1,13 @@
+{
+  "name": "propuesta-sisol-medicina-integrativa",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --format pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.0.0",
+    "@slidev/theme-seriph": "^0.24.0"
+  }
+}
