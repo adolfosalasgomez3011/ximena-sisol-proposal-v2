@@ -206,6 +206,72 @@ background: /assets/mental_health_lima.png
 
 ---
 layout: center
+title: "Implicación 1: Costo Clínico"
+background: /assets/modern_medicine_split.png
+---
+
+<div class="implication-overlay">
+  <h2>La implicación crítica para SISOL</h2>
+  <p class="implication-lead">Si no se corrige esta brecha, el problema deja de ser clínico y se vuelve clínico-operativo-financiero.</p>
+  <div class="implication-grid">
+    <div class="implication-card">
+      <h3>Clínica</h3>
+      <p>Más progresión evitable, mayor severidad y peores desenlaces por diagnóstico y control tardíos.</p>
+    </div>
+    <div class="implication-card">
+      <h3>Operativa</h3>
+      <p>Más reconsulta y menor resolución real por paciente, con presión creciente sobre la red.</p>
+    </div>
+    <div class="implication-card">
+      <h3>Económica</h3>
+      <p>Más casos en etapas de mayor costo y menor valor sanitario por cada sol invertido.</p>
+    </div>
+    <div class="implication-card">
+      <h3>Estratégica</h3>
+      <p>Riesgo de absorber demanda sin transformar desenlaces; oportunidad de liderazgo si se cambia el modelo.</p>
+    </div>
+  </div>
+  <div class="implication-closing">Decisión directiva: seguir financiando consecuencia tardía, o rediseñar continuidad temprana.</div>
+</div>
+
+<style>
+.implication-overlay {
+  position: relative; z-index: 2;
+  max-width: 54rem; margin: 0 auto;
+  background: rgba(4,12,12,0.78);
+  border-radius: 18px; padding: 1.8rem 2rem;
+  border: 1px solid rgba(78,205,196,0.18);
+  backdrop-filter: blur(10px);
+}
+.implication-overlay h2 {
+  font-size: 1.55rem !important; color: #fff !important;
+  font-family: 'Playfair Display', serif !important;
+  text-align: center; margin-bottom: 0.45rem !important;
+}
+.implication-lead {
+  text-align: center; color: #4ECDC4; font-size: 0.95rem;
+  margin-bottom: 1rem; line-height: 1.5;
+}
+.implication-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+}
+.implication-card {
+  background: rgba(15,47,45,0.45); border-radius: 10px;
+  border: 1px solid rgba(78,205,196,0.14); padding: 0.8rem 0.9rem;
+}
+.implication-card h3 { color: #E8906A; font-size: 0.92rem; margin: 0 0 0.35rem 0; }
+.implication-card p { color: rgba(205,235,232,0.88); font-size: 0.82rem; line-height: 1.45; margin: 0; }
+.implication-closing {
+  margin-top: 0.9rem;
+  text-align: center;
+  color: #4ECDC4;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+</style>
+
+---
+layout: center
 title: "Paciente como Sistema"
 background: /assets/patient_system.png
 ---
