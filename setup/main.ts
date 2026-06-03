@@ -66,6 +66,7 @@ function mountMapPanel() {
   if (typeof document === 'undefined') return
 
   ensureMobileZoomEnabled()
+  document.body.classList.add('custom-map-active')
 
   let root = document.getElementById('custom-map-panel')
   if (!root) {
@@ -110,6 +111,10 @@ function mountMapPanel() {
       html, body, #app, #slidev-root,
       .slidev-layout, .slidev-page, .slidev-slide-container, .slidev-slide-content {
         touch-action: pan-x pan-y pinch-zoom !important;
+      }
+      body.custom-map-active nav .slidev-icon-btn[title="Go to previous slide"],
+      body.custom-map-active nav .slidev-icon-btn[title="Go to next slide"] {
+        display: none !important;
       }
       #custom-map-panel { position: fixed; top: 12px; right: 14px; width: 64px; z-index: 95; transition: width .22s ease; }
       #custom-map-panel:hover, #custom-map-panel:focus-within, #custom-map-panel.open { width: 340px; }
