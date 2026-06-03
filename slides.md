@@ -204,31 +204,6 @@ background: ./assets/mental_health_lima.png
 <div class="stats-footer">La demanda existe. La respuesta aún no está completa.</div>
 </div>
 
-<style>
-.stats-overlay {
-  position: relative; z-index: 2; text-align: center;
-  padding: 1.5rem 2rem; max-width: 52rem; margin: 0 auto;
-}
-.stats-header {
-  font-size: 1.6rem; color: #fff; font-family: 'Playfair Display', serif;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.8); margin-bottom: 1.5rem; font-weight: 700;
-}
-.stats-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
-.stat-card {
-  background: rgba(4,14,14,0.75); border-radius: 12px;
-  padding: 1.2rem 0.8rem; border: 1px solid rgba(78,205,196,0.2); backdrop-filter: blur(10px);
-}
-.stat-card.big .stat-num { color: #4ECDC4; }
-.stat-card.accent { border-color: rgba(232,144,106,0.4); }
-.stat-card.accent .stat-num { color: #E8906A; }
-.stat-num { font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.4rem; }
-.stat-label { font-size: 0.75rem; color: rgba(180,210,208,0.85); line-height: 1.4; }
-.stats-footer {
-  margin-top: 1.2rem; font-size: 0.95rem; font-style: italic; color: #4ECDC4;
-  text-shadow: 0 0 20px rgba(78,205,196,0.4);
-}
-</style>
-
 ---
 layout: center
 title: "Paciente como Sistema"
