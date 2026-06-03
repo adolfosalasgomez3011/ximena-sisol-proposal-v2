@@ -247,16 +247,12 @@
 
 /* ── Slidev goto / overview rail ── */
 #slidev-goto-dialog {
-  display: none !important;
-}
-
-#slidev-goto-dialog {
   top: 20px !important;
   right: 14px !important;
   left: auto !important;
   bottom: auto !important;
-  width: 340px !important;
-  min-width: 340px !important;
+  width: 64px !important;
+  min-width: 64px !important;
   max-width: 340px !important;
   max-height: calc(100vh - 40px) !important;
   overflow: hidden !important;
@@ -264,13 +260,15 @@
   border-radius: 12px !important;
   background: rgba(6, 16, 16, 0.72) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(78, 205, 196, 0.2) !important;
-  transition: opacity 0.2s ease !important;
-  opacity: 0.96;
+  transition: width 0.22s ease, min-width 0.22s ease, opacity 0.2s ease !important;
+  opacity: 0.92;
   z-index: 40;
 }
 
 #slidev-goto-dialog:hover,
 #slidev-goto-dialog:focus-within {
+  width: 340px !important;
+  min-width: 340px !important;
   opacity: 1;
 }
 
@@ -294,13 +292,19 @@
 }
 
 #slidev-goto-dialog .autocomplete-list {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.2s ease;
   max-height: calc(100vh - 120px);
   overflow: auto;
   scrollbar-width: auto;
   scrollbar-color: #69E3DB rgba(4, 13, 13, 0.9);
+}
+
+#slidev-goto-dialog #slidev-goto-input {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
 }
 
 #slidev-goto-dialog .autocomplete-list p {
@@ -311,6 +315,8 @@
   text-overflow: ellipsis;
 }
 
+#slidev-goto-dialog:hover #slidev-goto-input,
+#slidev-goto-dialog:focus-within #slidev-goto-input,
 #slidev-goto-dialog:hover .autocomplete-list,
 #slidev-goto-dialog:focus-within .autocomplete-list {
   opacity: 1;
@@ -340,8 +346,8 @@ nav .slidev-icon-btn svg {
 }
 
 /* ── Big in-slide up/down navigation ── */
-nav .slidev-icon-btn:nth-child(2),
-nav .slidev-icon-btn:nth-child(3) {
+nav .slidev-icon-btn[title="Go to previous slide"],
+nav .slidev-icon-btn[title="Go to next slide"] {
   position: fixed !important;
   right: 1rem !important;
   left: auto !important;
@@ -355,24 +361,24 @@ nav .slidev-icon-btn:nth-child(3) {
   opacity: 0.98 !important;
 }
 
-nav .slidev-icon-btn:nth-child(2) {
+nav .slidev-icon-btn[title="Go to previous slide"] {
   top: calc(50% - 3.9rem) !important;
 }
 
-nav .slidev-icon-btn:nth-child(3) {
+nav .slidev-icon-btn[title="Go to next slide"] {
   top: calc(50% + 0.4rem) !important;
 }
 
-nav .slidev-icon-btn:nth-child(2):hover,
-nav .slidev-icon-btn:nth-child(3):hover {
+nav .slidev-icon-btn[title="Go to previous slide"]:hover,
+nav .slidev-icon-btn[title="Go to next slide"]:hover {
   transform: scale(1.06) !important;
   background: rgba(18, 52, 50, 0.96) !important;
   border-color: rgba(122, 240, 232, 0.9) !important;
   box-shadow: 0 0 0 1px rgba(122, 240, 232, 0.2), 0 10px 26px rgba(0, 0, 0, 0.45) !important;
 }
 
-nav .slidev-icon-btn:nth-child(2) svg,
-nav .slidev-icon-btn:nth-child(3) svg {
+nav .slidev-icon-btn[title="Go to previous slide"] svg,
+nav .slidev-icon-btn[title="Go to next slide"] svg {
   width: 1.45rem !important;
   height: 1.45rem !important;
 }
