@@ -291,7 +291,7 @@ background: /assets/science_gutbrain.png
   <img src="/assets/science_gutbrain.png" alt="Eje intestino-cerebro" class="science-visual-img" />
 </div>
 
-<div class="full-caption-bar">El eje intestino-cerebro: la biología del conflicto hecha visible</div>
+<div class="full-caption-bar full-caption-bar-strong">El eje intestino-cerebro: la biología del conflicto hecha visible</div>
 
 <style>
 .science-visual-wrap {
