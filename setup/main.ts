@@ -43,6 +43,10 @@ function currentSlideNumber(pathname: string) {
   return Number.isFinite(n) && n > 0 ? n : 1
 }
 
+function slideHref(slideNumber: number) {
+  return `/${slideNumber}${window.location.search || ''}`
+}
+
 function mountMapPanel() {
   if (typeof document === 'undefined') return
 
@@ -54,6 +58,8 @@ function mountMapPanel() {
   }
 
   const current = currentSlideNumber(window.location.pathname)
+  const prev = current > 1 ? current - 1 : null
+  const next = current < slides.length ? current + 1 : null
   const items = slides
     .map((s) => {
       const active = s.n === current ? ' map-item-active' : ''
@@ -63,6 +69,10 @@ function mountMapPanel() {
 
   root.innerHTML = `
     <button class="map-toggle" type="button" aria-label="Toggle map">MAP <span class="arrow">▾</span></button>
+    <div class="map-nav">
+      ${prev ? `<a class="map-nav-btn map-nav-prev" href="${slideHref(prev)}" aria-label="Go to previous slide">↑</a>` : `<span class="map-nav-btn map-nav-prev map-nav-disabled" aria-hidden="true">↑</span>`}
+      ${next ? `<a class="map-nav-btn map-nav-next" href="${slideHref(next)}" aria-label="Go to next slide">↓</a>` : `<span class="map-nav-btn map-nav-next map-nav-disabled" aria-hidden="true">↓</span>`}
+    </div>
     <div class="map-panel">${items}</div>
   `
 
@@ -76,22 +86,31 @@ function mountMapPanel() {
     }
   }
 
-  root.classList.add('open')
-
   if (!document.getElementById('custom-map-style')) {
     const style = document.createElement('style')
     style.id = 'custom-map-style'
     style.textContent = `
-      #custom-map-panel { position: fixed; top: 12px; right: 14px; width: 340px; z-index: 95; }
-      #custom-map-panel .map-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; border-radius: 10px; border: 1px solid rgba(116,239,231,.45); background: rgba(6,16,16,.86); color: #a9fff8; padding: .35rem .75rem; font-size: .68rem; letter-spacing: .14em; font-weight: 800; }
+      #custom-map-panel { position: fixed; top: 12px; right: 14px; width: 64px; z-index: 95; transition: width .22s ease; }
+      #custom-map-panel:hover, #custom-map-panel:focus-within, #custom-map-panel.open { width: 340px; }
+      #custom-map-panel .map-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; border-radius: 10px; border: 1px solid rgba(116,239,231,.45); background: rgba(6,16,16,.86); color: #a9fff8; padding: .35rem .75rem; font-size: .68rem; letter-spacing: .14em; font-weight: 800; overflow: hidden; }
+      #custom-map-panel:not(:hover):not(:focus-within):not(.open) .map-toggle { justify-content: center; padding-inline: .35rem; }
+      #custom-map-panel:not(:hover):not(:focus-within):not(.open) .map-toggle .arrow { display: none; }
       #custom-map-panel .map-panel { display: none; margin-top: .32rem; border-radius: 12px; border: 1px solid rgba(116,239,231,.34); background: rgba(6,16,16,.93); box-shadow: 0 10px 30px rgba(0,0,0,.42); max-height: calc(100vh - 82px); overflow: auto; }
-      #custom-map-panel.open .map-panel { display: block; }
+      #custom-map-panel:hover .map-panel, #custom-map-panel:focus-within .map-panel, #custom-map-panel.open .map-panel { display: block; }
+      #custom-map-panel .map-nav { position: fixed; right: 14px; top: calc(50% - 3.9rem); z-index: 96; display: flex; flex-direction: column; gap: .72rem; }
+      #custom-map-panel .map-nav-btn { width: 3.2rem; height: 3.2rem; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; border: 1px solid rgba(122,240,232,.55); background: rgba(4,14,14,.84); color: #eafdfc; text-decoration: none; font-size: 1.45rem; line-height: 1; box-shadow: 0 0 0 1px rgba(122,240,232,.2), 0 10px 26px rgba(0,0,0,.45); }
+      #custom-map-panel .map-nav-btn:hover { transform: scale(1.06); background: rgba(18,52,50,.96); border-color: rgba(122,240,232,.9); }
+      #custom-map-panel .map-nav-disabled { opacity: .35; pointer-events: none; }
       #custom-map-panel .map-item { display: grid; grid-template-columns: 2.1rem 1fr; gap: .5rem; align-items: start; text-decoration: none; color: rgba(224,248,246,.9); padding: .34rem .56rem; border-bottom: 1px solid rgba(116,239,231,.1); font-size: .73rem; }
       #custom-map-panel .map-item:last-child { border-bottom: none; }
       #custom-map-panel .map-item .num { opacity: .68; text-align: right; }
       #custom-map-panel .map-item:hover { background: rgba(78,205,196,.1); }
       #custom-map-panel .map-item-active { background: rgba(78,205,196,.16); color: #fff; }
-      @media (max-width: 900px) { #custom-map-panel { width: min(92vw, 340px); right: 8px; top: 8px; } }
+      @media (max-width: 900px) {
+        #custom-map-panel { width: min(92vw, 340px); right: 8px; top: 8px; }
+        #custom-map-panel:hover, #custom-map-panel:focus-within, #custom-map-panel.open { width: min(92vw, 340px); }
+        #custom-map-panel .map-nav { right: 8px; }
+      }
     `
     document.head.appendChild(style)
   }
