@@ -69,31 +69,102 @@ function bindPinchZoomFallback() {
 
   if (window.matchMedia('(min-width: 901px)').matches) return
 
-  let startDistance = 0
-  let baseScale = 1
   let currentScale = 1
+  let currentTx = 0
+  let currentTy = 0
+
+  let pinchStartDistance = 0
+  let pinchStartScale = 1
+  let pinchStartTx = 0
+  let pinchStartTy = 0
+  let pinchStartCenterX = 0
+  let pinchStartCenterY = 0
+
+  let panStartX = 0
+  let panStartY = 0
+  let panStartTx = 0
+  let panStartTy = 0
+  let isPanning = false
 
   const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
   const distance = (a: Touch, b: Touch) => Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY)
+  const center = (a: Touch, b: Touch) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 })
 
   const getTarget = () =>
     (document.querySelector('.slidev-slide-content') ||
       document.querySelector('.slidev-layout') ||
       document.querySelector('#app')) as HTMLElement | null
 
+  const getBaseSize = (target: HTMLElement) => {
+    if (!target.dataset.baseWidth || !target.dataset.baseHeight) {
+      target.dataset.baseWidth = String(target.offsetWidth)
+      target.dataset.baseHeight = String(target.offsetHeight)
+    }
+    return {
+      width: Number(target.dataset.baseWidth) || target.offsetWidth,
+      height: Number(target.dataset.baseHeight) || target.offsetHeight,
+    }
+  }
+
+  const limitPan = (target: HTMLElement, scale: number, tx: number, ty: number) => {
+    const base = getBaseSize(target)
+    const maxX = Math.max(0, ((base.width * scale) - base.width) / 2)
+    const maxY = Math.max(0, ((base.height * scale) - base.height) / 2)
+    return {
+      tx: clamp(tx, -maxX, maxX),
+      ty: clamp(ty, -maxY, maxY),
+    }
+  }
+
   const applyScale = () => {
     const target = getTarget()
     if (!target) return
-    target.style.transformOrigin = 'center top'
-    target.style.transform = `scale(${currentScale})`
+    if (currentScale <= 1.001) {
+      currentScale = 1
+      currentTx = 0
+      currentTy = 0
+      target.style.transformOrigin = 'center center'
+      target.style.transform = 'translate(0px, 0px) scale(1)'
+      return
+    }
+
+    const bounded = limitPan(target, currentScale, currentTx, currentTy)
+    currentTx = bounded.tx
+    currentTy = bounded.ty
+
+    target.style.transformOrigin = 'center center'
+    target.style.transform = `translate(${currentTx}px, ${currentTy}px) scale(${currentScale})`
+  }
+
+  const inCustomMapPanel = (target: EventTarget | null) => {
+    const panel = document.getElementById('custom-map-panel')
+    return !!(panel && target instanceof Node && panel.contains(target))
   }
 
   document.addEventListener(
     'touchstart',
     (ev) => {
-      if (ev.touches.length !== 2) return
-      startDistance = distance(ev.touches[0], ev.touches[1])
-      baseScale = currentScale
+      if (inCustomMapPanel(ev.target)) return
+
+      if (ev.touches.length === 2) {
+        pinchStartDistance = distance(ev.touches[0], ev.touches[1])
+        pinchStartScale = currentScale
+        pinchStartTx = currentTx
+        pinchStartTy = currentTy
+        const c = center(ev.touches[0], ev.touches[1])
+        pinchStartCenterX = c.x
+        pinchStartCenterY = c.y
+        isPanning = false
+        return
+      }
+
+      if (ev.touches.length === 1 && currentScale > 1.001) {
+        panStartX = ev.touches[0].clientX
+        panStartY = ev.touches[0].clientY
+        panStartTx = currentTx
+        panStartTy = currentTy
+        isPanning = true
+      }
     },
     { passive: true }
   )
@@ -101,28 +172,60 @@ function bindPinchZoomFallback() {
   document.addEventListener(
     'touchmove',
     (ev) => {
-      if (ev.touches.length !== 2) return
-      const panel = document.getElementById('custom-map-panel')
-      const t = ev.target as Node | null
-      if (panel && t && panel.contains(t)) return
+      if (inCustomMapPanel(ev.target)) return
 
-      ev.preventDefault()
-      const d = distance(ev.touches[0], ev.touches[1])
-      if (!startDistance) startDistance = d
-      const factor = d / startDistance
-      currentScale = clamp(baseScale * factor, 1, 3)
-      applyScale()
+      if (ev.touches.length === 2) {
+        ev.preventDefault()
+        const d = distance(ev.touches[0], ev.touches[1])
+        if (!pinchStartDistance) pinchStartDistance = d
+        const factor = d / pinchStartDistance
+        currentScale = clamp(pinchStartScale * factor, 1, 2.5)
+
+        const c = center(ev.touches[0], ev.touches[1])
+        currentTx = pinchStartTx + (c.x - pinchStartCenterX)
+        currentTy = pinchStartTy + (c.y - pinchStartCenterY)
+        applyScale()
+        return
+      }
+
+      if (ev.touches.length === 1 && isPanning && currentScale > 1.001) {
+        ev.preventDefault()
+        currentTx = panStartTx + (ev.touches[0].clientX - panStartX)
+        currentTy = panStartTy + (ev.touches[0].clientY - panStartY)
+        applyScale()
+      }
     },
     { passive: false }
   )
 
   document.addEventListener(
     'touchend',
-    () => {
+    (ev) => {
+      if (ev.touches.length === 0) {
+        pinchStartDistance = 0
+        isPanning = false
+      }
+
+      if (ev.touches.length === 1 && currentScale > 1.001) {
+        panStartX = ev.touches[0].clientX
+        panStartY = ev.touches[0].clientY
+        panStartTx = currentTx
+        panStartTy = currentTy
+        isPanning = true
+      }
+
       if (currentScale < 1.01) {
-        currentScale = 1
         applyScale()
       }
+    },
+    { passive: true }
+  )
+
+  document.addEventListener(
+    'touchcancel',
+    () => {
+      pinchStartDistance = 0
+      isPanning = false
     },
     { passive: true }
   )
