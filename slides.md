@@ -584,6 +584,161 @@ background: /assets/hamer_story.png
 
 ---
 layout: center
+title: "Decisión de Modelo"
+background: /assets/integration_bridge.png
+---
+
+<div class="decision-bridge-overlay">
+  <div class="decision-kicker">Implicación Directiva</div>
+  <h2>La implicación obliga una decisión de modelo</h2>
+  <p class="decision-core">No decidir también es decidir: mantener costo creciente por caso crónico.</p>
+
+  <div class="decision-list">
+    <div class="decision-item">Seguir atendiendo episodios</div>
+    <div class="decision-item">O rediseñar continuidad clínica</div>
+    <div class="decision-item">Impactar desenlace, no solo volumen</div>
+  </div>
+</div>
+
+<style>
+.decision-bridge-overlay {
+  position: relative; z-index: 2;
+  max-width: 50rem; margin: 0 auto;
+  text-align: center;
+  background: rgba(3, 11, 11, 0.8);
+  border-radius: 18px;
+  border: 1px solid rgba(78, 205, 196, 0.2);
+  padding: 1.8rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.decision-kicker {
+  color: #4ECDC4;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.decision-bridge-overlay h2 {
+  color: #fff !important;
+  font-size: 1.65rem !important;
+  font-family: 'Playfair Display', serif !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.decision-core {
+  color: rgba(214, 240, 237, 0.92);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.decision-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+
+.decision-item {
+  background: rgba(20, 60, 58, 0.42);
+  border: 1px solid rgba(78, 205, 196, 0.16);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  color: rgba(220, 244, 241, 0.9);
+  font-size: 0.88rem;
+}
+</style>
+
+---
+layout: center
+title: "Criterio de Solución"
+background: /assets/integration_bridge.png
+---
+
+<div class="criteria-bridge-overlay">
+  <h2>Entonces, ¿qué tipo de solución sí funciona?</h2>
+  <p class="criteria-core">Una solución válida debe cumplir tres condiciones mínimas.</p>
+
+  <div class="criteria-grid">
+    <div class="criteria-card">
+      <div class="criteria-num">1</div>
+      <div class="criteria-text">Detectar temprano</div>
+    </div>
+    <div class="criteria-card">
+      <div class="criteria-num">2</div>
+      <div class="criteria-text">Integrar físico + mental + contexto</div>
+    </div>
+    <div class="criteria-card">
+      <div class="criteria-num">3</div>
+      <div class="criteria-text">Sostener seguimiento longitudinal</div>
+    </div>
+  </div>
+
+  <div class="criteria-close">Con este criterio, la propuesta que sigue no es otra oferta: es un rediseño de trayectoria clínica.</div>
+</div>
+
+<style>
+.criteria-bridge-overlay {
+  position: relative; z-index: 2;
+  max-width: 52rem; margin: 0 auto;
+  text-align: center;
+  background: rgba(4, 12, 12, 0.8);
+  border-radius: 18px;
+  border: 1px solid rgba(78, 205, 196, 0.2);
+  padding: 1.7rem 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.criteria-bridge-overlay h2 {
+  color: #fff !important;
+  font-size: 1.55rem !important;
+  font-family: 'Playfair Display', serif !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.criteria-core {
+  color: rgba(203, 236, 232, 0.9);
+  font-size: 0.94rem;
+  margin-bottom: 0.9rem;
+}
+
+.criteria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.criteria-card {
+  background: rgba(20, 60, 58, 0.42);
+  border: 1px solid rgba(78, 205, 196, 0.14);
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.criteria-num {
+  color: #E8906A;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.criteria-text {
+  color: rgba(221, 244, 241, 0.9);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.criteria-close {
+  margin-top: 0.85rem;
+  color: #4ECDC4;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+</style>
+
+---
+layout: center
 title: "La Propuesta"
 background: /assets/integration_bridge.png
 ---
