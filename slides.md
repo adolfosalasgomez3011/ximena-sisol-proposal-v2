@@ -751,12 +751,25 @@ background: /assets/integration_bridge.png
 <div class="bridge-overlay">
 <div class="bridge-eyebrow">LA PROPUESTA</div>
 <h1 class="bridge-title">No reemplazamos la medicina alopática.<br/><span class="bridge-accent">La completamos.</span></h1>
-<div class="bridge-model">
-  <div class="bridge-box specialist">Especialista<br/>Alopático</div>
-  <div class="bridge-arrows">⇄</div>
-  <div class="bridge-box integrative">Depto. de<br/>Medicina Integrativa</div>
-  <div class="bridge-arrows">⇄</div>
-  <div class="bridge-box patient">Paciente</div>
+<div class="triangle-model" aria-label="Modelo triangular de interacción clínica">
+  <svg class="triangle-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="rgba(132,228,223,0.92)"></polygon>
+      </marker>
+    </defs>
+    <line x1="50" y1="16" x2="18" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
+    <line x1="50" y1="16" x2="82" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
+    <line x1="18" y1="82" x2="82" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
+  </svg>
+
+  <div class="triangle-node patient">Paciente</div>
+  <div class="triangle-node specialist">Especialista<br/>Alopático</div>
+  <div class="triangle-node integrative">Depto. de<br/>Medicina Integrativa</div>
+
+  <div class="edge-label top-left">↔</div>
+  <div class="edge-label top-right">↔</div>
+  <div class="edge-label bottom">↔</div>
 </div>
 <p class="bridge-note">El departamento no compite con ninguna especialidad — dialoga con cada médico que trata al mismo paciente.</p>
 </div>
@@ -775,18 +788,67 @@ background: /assets/integration_bridge.png
 .bridge-title {
   font-size: 1.7rem !important; color: #fff !important;
   font-family: 'Playfair Display', serif !important;
-  line-height: 1.3 !important; margin-bottom: 1.5rem !important;
+  line-height: 1.3 !important; margin-bottom: 1.1rem !important;
 }
 .bridge-accent { color: #4ECDC4 !important; -webkit-text-fill-color: #4ECDC4 !important; }
-.bridge-model { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 1.2rem; }
-.bridge-box { border-radius: 10px; padding: 0.8rem 1.2rem; font-size: 0.85rem; font-weight: 700; line-height: 1.4; }
-.bridge-box.specialist { background: rgba(26,107,107,0.3); color: #4ECDC4; border: 1.5px solid rgba(78,205,196,0.4); }
-.bridge-box.integrative {
-  background: rgba(78,205,196,0.25); color: #fff; border: 2px solid #4ECDC4;
-  transform: scale(1.08); box-shadow: 0 0 24px rgba(78,205,196,0.35);
+.triangle-model {
+  position: relative;
+  width: min(46rem, 90%);
+  height: 18rem;
+  margin: 0 auto 1rem;
 }
-.bridge-box.patient { background: rgba(232,144,106,0.2); color: #E8906A; border: 1.5px solid rgba(232,144,106,0.4); }
-.bridge-arrows { font-size: 1.4rem; color: rgba(78,205,196,0.5); }
+.triangle-links {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.triangle-links line {
+  stroke: rgba(132,228,223,0.82);
+  stroke-width: 1.8;
+}
+.triangle-node {
+  position: absolute;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+  min-width: 10rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+.triangle-node.patient {
+  top: 0.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(232,144,106,0.18);
+  color: #E8906A;
+  border: 1.4px solid rgba(232,144,106,0.45);
+}
+.triangle-node.specialist {
+  left: 1rem;
+  bottom: 1.1rem;
+  background: rgba(26,107,107,0.26);
+  color: #9CF2EC;
+  border: 1.4px solid rgba(78,205,196,0.45);
+}
+.triangle-node.integrative {
+  right: 1rem;
+  bottom: 1.1rem;
+  background: rgba(78,205,196,0.24);
+  color: #fff;
+  border: 1.6px solid rgba(78,205,196,0.7);
+}
+.edge-label {
+  position: absolute;
+  color: rgba(132,228,223,0.95);
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px rgba(132,228,223,0.25);
+}
+.edge-label.top-left { left: 33%; top: 37%; }
+.edge-label.top-right { right: 33%; top: 37%; }
+.edge-label.bottom { left: 50%; transform: translateX(-50%); bottom: 3.5rem; }
 .bridge-note { font-size: 0.82rem; color: rgba(180,215,210,0.7); font-style: italic; }
 </style>
 
