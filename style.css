@@ -247,6 +247,10 @@
 
 /* ── Slidev goto / overview rail ── */
 #slidev-goto-dialog {
+  display: none !important;
+}
+
+#slidev-goto-dialog {
   top: 20px !important;
   right: 14px !important;
   left: auto !important;
