@@ -251,16 +251,16 @@
   right: 14px !important;
   left: auto !important;
   bottom: auto !important;
-  width: 340px !important;
-  min-width: 340px !important;
-  max-width: 340px !important;
+  width: 74px !important;
+  min-width: 74px !important;
+  max-width: 74px !important;
   max-height: calc(100vh - 40px) !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   border: 1px solid rgba(116, 239, 231, 0.45) !important;
   border-radius: 12px !important;
   background: rgba(6, 16, 16, 0.72) !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.42), inset 0 0 0 1px rgba(78, 205, 196, 0.2) !important;
-  transition: opacity 0.2s ease !important;
+  transition: width 0.22s ease, max-width 0.22s ease, opacity 0.2s ease !important;
   opacity: 0.96;
   z-index: 40;
 }
@@ -273,14 +273,28 @@
   opacity: 1;
 }
 
+#slidev-goto-dialog::before {
+  content: 'MAP';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  font-weight: 800;
+  color: #7AF0E8;
+  text-shadow: 0 0 14px rgba(122, 240, 232, 0.35);
+  pointer-events: none;
+}
+
 #slidev-goto-dialog > .bg-main {
   border-radius: inherit !important;
   background: rgba(10, 14, 14, 0.72) !important;
 }
 
 #slidev-goto-dialog .autocomplete-list {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.2s ease;
   max-height: calc(100vh - 120px);
   overflow: auto;

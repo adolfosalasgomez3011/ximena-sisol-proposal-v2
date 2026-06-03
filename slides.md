@@ -752,20 +752,17 @@ background: /assets/integration_bridge.png
 <div class="bridge-eyebrow">LA PROPUESTA</div>
 <h1 class="bridge-title">No reemplazamos la medicina alopática.<br/><span class="bridge-accent">La completamos.</span></h1>
 <div class="triangle-model" aria-label="Modelo triangular de interacción clínica">
-  <svg class="triangle-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-    <defs>
-      <marker id="arrowhead-pro" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-        <path d="M0,0 L8,4 L0,8 z" fill="rgba(166,244,238,0.95)"></path>
-      </marker>
-    </defs>
-    <line class="edge-left" x1="50" y1="22" x2="22" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
-    <line class="edge-right" x1="50" y1="22" x2="78" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
-    <line class="edge-bottom" x1="22" y1="78" x2="78" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
-  </svg>
+  <div class="edge edge-left"></div>
+  <div class="edge edge-right"></div>
+  <div class="edge edge-bottom"></div>
 
   <div class="triangle-node patient">Paciente</div>
   <div class="triangle-node specialist">Especialista<br/>Alopático</div>
   <div class="triangle-node integrative">Depto. de<br/>Medicina Integrativa</div>
+
+  <div class="edge-dot left-dot">↔</div>
+  <div class="edge-dot right-dot">↔</div>
+  <div class="edge-dot bottom-dot">↔</div>
 </div>
 <p class="bridge-note">El departamento no compite con ninguna especialidad — dialoga con cada médico que trata al mismo paciente.</p>
 </div>
@@ -782,63 +779,87 @@ background: /assets/integration_bridge.png
   text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;
 }
 .bridge-title {
-  font-size: 1.6rem !important; color: #fff !important;
+  font-size: 1.58rem !important; color: #fff !important;
   font-family: 'Playfair Display', serif !important;
-  line-height: 1.28 !important; margin-bottom: 1rem !important;
+  line-height: 1.26 !important; margin-bottom: 1rem !important;
 }
 .bridge-accent { color: #4ECDC4 !important; -webkit-text-fill-color: #4ECDC4 !important; }
 .triangle-model {
   position: relative;
-  width: min(50rem, 94%);
-  height: 17.4rem;
-  margin: 0.2rem auto 0.95rem;
+  width: min(47rem, 92%);
+  height: 16.2rem;
+  margin: 0.15rem auto 0.95rem;
 }
-.triangle-links {
+.edge {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  background: rgba(158,241,236,0.86);
+  height: 2px;
+  transform-origin: left center;
+  box-shadow: 0 0 6px rgba(120,230,223,0.22);
 }
-.triangle-links line {
-  stroke: rgba(150,240,234,0.92);
-  stroke-width: 1.05;
-  filter: drop-shadow(0 0 6px rgba(132,228,223,0.24));
+.edge-left {
+  left: 50%;
+  top: 20%;
+  width: 37%;
+  transform: rotate(132deg);
+}
+.edge-right {
+  left: 50%;
+  top: 20%;
+  width: 37%;
+  transform: rotate(48deg);
+}
+.edge-bottom {
+  left: 22%;
+  top: 81%;
+  width: 56%;
 }
 .triangle-node {
   position: absolute;
   border-radius: 10px;
-  padding: 0.62rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 780;
-  line-height: 1.3;
+  padding: 0.56rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 760;
+  line-height: 1.24;
   text-align: center;
-  min-width: 11rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.24);
+  min-width: 11.4rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.22);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
+  z-index: 2;
 }
 .triangle-node.patient {
-  top: 0.05rem;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(232,144,106,0.2);
-  color: #F4A585;
-  border: 1.2px solid rgba(232,144,106,0.5);
+  background: rgba(232,144,106,0.18);
+  color: #F0A786;
+  border: 1px solid rgba(232,144,106,0.52);
 }
 .triangle-node.specialist {
-  left: 0.25rem;
-  bottom: 0.25rem;
-  background: rgba(14,73,69,0.52);
-  color: #C4F7F2;
-  border: 1.2px solid rgba(108,223,216,0.56);
+  left: 0;
+  bottom: 0;
+  background: rgba(14,73,69,0.56);
+  color: #D1FCF8;
+  border: 1px solid rgba(108,223,216,0.58);
 }
 .triangle-node.integrative {
-  right: 0.25rem;
-  bottom: 0.25rem;
-  background: rgba(27,121,115,0.52);
-  color: #E8FFFD;
-  border: 1.2px solid rgba(127,237,230,0.65);
+  right: 0;
+  bottom: 0;
+  background: rgba(27,121,115,0.56);
+  color: #F1FFFE;
+  border: 1px solid rgba(127,237,230,0.67);
 }
+.edge-dot {
+  position: absolute;
+  font-size: 0.95rem;
+  color: rgba(167,244,238,0.9);
+  text-shadow: 0 0 8px rgba(132,228,223,0.25);
+  z-index: 2;
+}
+.left-dot { left: 26%; top: 43%; }
+.right-dot { right: 26%; top: 43%; }
+.bottom-dot { left: 50%; transform: translateX(-50%); top: 74%; }
 .bridge-note {
   font-size: 0.8rem;
   color: rgba(184,224,220,0.76);
