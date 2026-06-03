@@ -206,6 +206,102 @@ background: /assets/mental_health_lima.png
 
 ---
 layout: center
+title: "Problema Central"
+background: /assets/modern_medicine_split.png
+---
+
+<div class="problem-bridge-overlay">
+  <div class="problem-kicker">Del dato al diagnóstico del sistema</div>
+  <h2>El problema no es la demanda</h2>
+  <h3>El problema es la falta de continuidad resolutiva en crónicos físico-mentales.</h3>
+
+  <div class="problem-bridge-grid">
+    <div class="problem-bridge-card">
+      <div class="pb-title">Lo que sí existe</div>
+      <p>Demanda sostenida, cobertura amplia y alta frecuencia de consulta.</p>
+    </div>
+    <div class="problem-bridge-card">
+      <div class="pb-title">Lo que falta</div>
+      <p>Detección temprana, seguimiento longitudinal e intervención integrativa oportuna.</p>
+    </div>
+  </div>
+
+  <div class="problem-bridge-close">Resultado: el sistema atiende episodios, pero no cambia la trayectoria de la enfermedad.</div>
+</div>
+
+<style>
+.problem-bridge-overlay {
+  position: relative; z-index: 2;
+  max-width: 54rem; margin: 0 auto;
+  background: rgba(3, 10, 10, 0.8);
+  border: 1px solid rgba(78, 205, 196, 0.2);
+  border-radius: 18px;
+  padding: 1.8rem 2rem;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.problem-kicker {
+  color: #4ECDC4;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.problem-bridge-overlay h2 {
+  color: #fff !important;
+  font-size: 1.75rem !important;
+  font-family: 'Playfair Display', serif !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.problem-bridge-overlay h3 {
+  color: rgba(214, 240, 236, 0.92);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0 0 1rem 0;
+}
+
+.problem-bridge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.problem-bridge-card {
+  text-align: left;
+  background: rgba(17, 52, 50, 0.45);
+  border: 1px solid rgba(78, 205, 196, 0.15);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+}
+
+.pb-title {
+  color: #E8906A;
+  font-size: 0.86rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.problem-bridge-card p {
+  margin: 0;
+  color: rgba(209, 236, 232, 0.9);
+  font-size: 0.81rem;
+  line-height: 1.4;
+}
+
+.problem-bridge-close {
+  margin-top: 0.9rem;
+  color: #4ECDC4;
+  font-style: italic;
+  font-size: 0.88rem;
+}
+</style>
+
+---
+layout: center
 title: "Implicación 1: Costo Clínico"
 background: /assets/modern_medicine_split.png
 ---
