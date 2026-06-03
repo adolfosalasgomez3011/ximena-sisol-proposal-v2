@@ -497,6 +497,11 @@ background: /assets/science_gutbrain.png
     <h3>Las 5 Leyes Biológicas</h3>
     <p>Toda enfermedad tiene una causa biológica: un conflicto emocional inesperado que impacta primero el cerebro, luego el órgano correspondiente.</p>
   </div>
+  <div class="sci-glass-card teal-card">
+    <div class="sci-num">④</div>
+    <h3>Estrés-Cortisol-Hipocampo</h3>
+    <p>Meta-análisis (35 estudios; 13,867 personas): mayor cortisol se asocia con menor volumen hipocampal (r = -0.11) y la depresión tardía muestra hipocampo más pequeño (g = -0.32).</p>
+  </div>
 </div>
 </div>
 
@@ -510,7 +515,7 @@ background: /assets/science_gutbrain.png
   font-family: 'Playfair Display', serif !important; margin-bottom: 1.2rem !important;
   text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
-.sci-glass-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.1rem; }
+.sci-glass-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.1rem; }
 .sci-glass-card {
   background: rgba(4,18,16,0.78); border-radius: 14px; padding: 1.4rem; text-align: left;
   backdrop-filter: blur(14px); border: 1px solid rgba(78,205,196,0.18); position: relative;

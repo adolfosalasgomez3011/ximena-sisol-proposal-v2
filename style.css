@@ -282,9 +282,9 @@
 
 #slidev-goto-dialog:hover,
 #slidev-goto-dialog:focus-within {
-  width: 360px !important;
-  min-width: 360px !important;
-  max-width: 360px !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
   opacity: 1;
 }
 
@@ -294,13 +294,31 @@
 }
 
 #slidev-goto-dialog .autocomplete-list {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.2s ease;
   max-height: calc(100vh - 120px);
   overflow: auto;
   scrollbar-width: auto;
   scrollbar-color: #69E3DB rgba(4, 13, 13, 0.9);
+}
+
+#slidev-goto-dialog .autocomplete-list p {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#slidev-goto-dialog:not(:hover):not(:focus-within) .autocomplete-list button {
+  justify-content: flex-start !important;
+  padding-left: 0.45rem !important;
+  padding-right: 0.2rem !important;
+}
+
+#slidev-goto-dialog:not(:hover):not(:focus-within) .autocomplete-list p {
+  opacity: 0.9;
+  font-size: 0.72rem;
 }
 
 #slidev-goto-dialog:hover .autocomplete-list,
