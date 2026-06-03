@@ -499,7 +499,7 @@ background: /assets/science_gutbrain.png
   </div>
   <div class="sci-glass-card teal-card">
     <div class="sci-num">④</div>
-    <h3>Estrés-Cortisol-Hipocampo</h3>
+    <h3>Neurociencia -Estrés-Cortisol-Hipocampo</h3>
     <p>Meta-análisis (35 estudios; 13,867 personas): mayor cortisol se asocia con menor volumen hipocampal (r = -0.11) y la depresión tardía muestra hipocampo más pequeño (g = -0.32).</p>
   </div>
 </div>
@@ -751,18 +751,8 @@ background: /assets/integration_bridge.png
 <div class="bridge-overlay">
 <div class="bridge-eyebrow">LA PROPUESTA</div>
 <h1 class="bridge-title">No reemplazamos la medicina alopática.<br/><span class="bridge-accent">La completamos.</span></h1>
-<div class="triangle-model" aria-label="Modelo triangular de interacción clínica">
-  <div class="edge edge-left"></div>
-  <div class="edge edge-right"></div>
-  <div class="edge edge-bottom"></div>
-
-  <div class="triangle-node patient">Paciente</div>
-  <div class="triangle-node specialist">Especialista<br/>Alopático</div>
-  <div class="triangle-node integrative">Depto. de<br/>Medicina Integrativa</div>
-
-  <div class="edge-dot left-dot">↔</div>
-  <div class="edge-dot right-dot">↔</div>
-  <div class="edge-dot bottom-dot">↔</div>
+<div class="bridge-image-wrap" aria-label="Modelo triangular de interacción clínica">
+  <img src="/assets/slide15_triangle_reference_v1.png" alt="Triángulo de interacción clínica entre paciente, especialista alopático y departamento de medicina integrativa" class="bridge-image" />
 </div>
 <p class="bridge-note">El departamento no compite con ninguna especialidad — dialoga con cada médico que trata al mismo paciente.</p>
 </div>
@@ -784,82 +774,18 @@ background: /assets/integration_bridge.png
   line-height: 1.26 !important; margin-bottom: 1rem !important;
 }
 .bridge-accent { color: #4ECDC4 !important; -webkit-text-fill-color: #4ECDC4 !important; }
-.triangle-model {
-  position: relative;
-  width: min(47rem, 92%);
-  height: 16.2rem;
-  margin: 0.15rem auto 0.95rem;
+.bridge-image-wrap {
+  width: min(51rem, 96%);
+  margin: 0.2rem auto 0.9rem;
 }
-.edge {
-  position: absolute;
-  background: rgba(158,241,236,0.86);
-  height: 2px;
-  transform-origin: left center;
-  box-shadow: 0 0 6px rgba(120,230,223,0.22);
+.bridge-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(120,230,223,0.25);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.3);
 }
-.edge-left {
-  left: 50%;
-  top: 20%;
-  width: 37%;
-  transform: rotate(132deg);
-}
-.edge-right {
-  left: 50%;
-  top: 20%;
-  width: 37%;
-  transform: rotate(48deg);
-}
-.edge-bottom {
-  left: 22%;
-  top: 81%;
-  width: 56%;
-}
-.triangle-node {
-  position: absolute;
-  border-radius: 10px;
-  padding: 0.56rem 0.95rem;
-  font-size: 0.82rem;
-  font-weight: 760;
-  line-height: 1.24;
-  text-align: center;
-  min-width: 11.4rem;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.22);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  z-index: 2;
-}
-.triangle-node.patient {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(232,144,106,0.18);
-  color: #F0A786;
-  border: 1px solid rgba(232,144,106,0.52);
-}
-.triangle-node.specialist {
-  left: 0;
-  bottom: 0;
-  background: rgba(14,73,69,0.56);
-  color: #D1FCF8;
-  border: 1px solid rgba(108,223,216,0.58);
-}
-.triangle-node.integrative {
-  right: 0;
-  bottom: 0;
-  background: rgba(27,121,115,0.56);
-  color: #F1FFFE;
-  border: 1px solid rgba(127,237,230,0.67);
-}
-.edge-dot {
-  position: absolute;
-  font-size: 0.95rem;
-  color: rgba(167,244,238,0.9);
-  text-shadow: 0 0 8px rgba(132,228,223,0.25);
-  z-index: 2;
-}
-.left-dot { left: 26%; top: 43%; }
-.right-dot { right: 26%; top: 43%; }
-.bottom-dot { left: 50%; transform: translateX(-50%); top: 74%; }
 .bridge-note {
   font-size: 0.8rem;
   color: rgba(184,224,220,0.76);
