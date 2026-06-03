@@ -179,11 +179,12 @@ function bindPinchZoomFallback() {
         const d = distance(ev.touches[0], ev.touches[1])
         if (!pinchStartDistance) pinchStartDistance = d
         const factor = d / pinchStartDistance
-        currentScale = clamp(pinchStartScale * factor, 1, 2.5)
+        const dampedFactor = 1 + (factor - 1) * 0.4
+        currentScale = clamp(pinchStartScale * dampedFactor, 1, 1.9)
 
         const c = center(ev.touches[0], ev.touches[1])
-        currentTx = pinchStartTx + (c.x - pinchStartCenterX)
-        currentTy = pinchStartTy + (c.y - pinchStartCenterY)
+        currentTx = pinchStartTx + (c.x - pinchStartCenterX) * 0.35
+        currentTy = pinchStartTy + (c.y - pinchStartCenterY) * 0.35
         applyScale()
         return
       }
@@ -280,7 +281,8 @@ function mountMapPanel() {
     style.textContent = `
       html, body, #app, #slidev-root,
       .slidev-layout, .slidev-page, .slidev-slide-container, .slidev-slide-content {
-        touch-action: pan-x pan-y pinch-zoom !important;
+        touch-action: none !important;
+        overscroll-behavior: contain !important;
       }
       body.custom-map-active nav .slidev-icon-btn[title="Go to previous slide"],
       body.custom-map-active nav .slidev-icon-btn[title="Go to next slide"] {
