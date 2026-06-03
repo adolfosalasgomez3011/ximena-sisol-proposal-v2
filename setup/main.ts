@@ -47,8 +47,25 @@ function slideHref(slideNumber: number) {
   return `/${slideNumber}${window.location.search || ''}`
 }
 
+function ensureMobileZoomEnabled() {
+  const existing = document.querySelector('meta[name="viewport"]') as HTMLMetaElement | null
+  const content = 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes'
+
+  if (existing) {
+    if (existing.content !== content) existing.content = content
+    return
+  }
+
+  const meta = document.createElement('meta')
+  meta.name = 'viewport'
+  meta.content = content
+  document.head.appendChild(meta)
+}
+
 function mountMapPanel() {
   if (typeof document === 'undefined') return
+
+  ensureMobileZoomEnabled()
 
   let root = document.getElementById('custom-map-panel')
   if (!root) {
@@ -109,6 +126,8 @@ function mountMapPanel() {
       @media (max-width: 900px) {
         #custom-map-panel { width: min(92vw, 340px); right: 8px; top: 8px; }
         #custom-map-panel:hover, #custom-map-panel:focus-within, #custom-map-panel.open { width: min(92vw, 340px); }
+        #custom-map-panel .map-panel { display: none !important; }
+        #custom-map-panel.open .map-panel { display: block !important; }
         #custom-map-panel .map-nav { right: 8px; }
       }
     `
