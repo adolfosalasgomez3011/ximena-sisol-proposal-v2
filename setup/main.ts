@@ -62,10 +62,77 @@ function ensureMobileZoomEnabled() {
   document.head.appendChild(meta)
 }
 
+function bindPinchZoomFallback() {
+  const w = window as any
+  if (w.__slidevPinchZoomBound) return
+  w.__slidevPinchZoomBound = true
+
+  if (window.matchMedia('(min-width: 901px)').matches) return
+
+  let startDistance = 0
+  let baseScale = 1
+  let currentScale = 1
+
+  const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
+  const distance = (a: Touch, b: Touch) => Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY)
+
+  const getTarget = () =>
+    (document.querySelector('.slidev-slide-content') ||
+      document.querySelector('.slidev-layout') ||
+      document.querySelector('#app')) as HTMLElement | null
+
+  const applyScale = () => {
+    const target = getTarget()
+    if (!target) return
+    target.style.transformOrigin = 'center top'
+    target.style.transform = `scale(${currentScale})`
+  }
+
+  document.addEventListener(
+    'touchstart',
+    (ev) => {
+      if (ev.touches.length !== 2) return
+      startDistance = distance(ev.touches[0], ev.touches[1])
+      baseScale = currentScale
+    },
+    { passive: true }
+  )
+
+  document.addEventListener(
+    'touchmove',
+    (ev) => {
+      if (ev.touches.length !== 2) return
+      const panel = document.getElementById('custom-map-panel')
+      const t = ev.target as Node | null
+      if (panel && t && panel.contains(t)) return
+
+      ev.preventDefault()
+      const d = distance(ev.touches[0], ev.touches[1])
+      if (!startDistance) startDistance = d
+      const factor = d / startDistance
+      currentScale = clamp(baseScale * factor, 1, 3)
+      applyScale()
+    },
+    { passive: false }
+  )
+
+  document.addEventListener(
+    'touchend',
+    () => {
+      if (currentScale < 1.01) {
+        currentScale = 1
+        applyScale()
+      }
+    },
+    { passive: true }
+  )
+}
+
 function mountMapPanel() {
   if (typeof document === 'undefined') return
 
   ensureMobileZoomEnabled()
+  bindPinchZoomFallback()
   document.body.classList.add('custom-map-active')
 
   let root = document.getElementById('custom-map-panel')
