@@ -754,22 +754,18 @@ background: /assets/integration_bridge.png
 <div class="triangle-model" aria-label="Modelo triangular de interacción clínica">
   <svg class="triangle-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     <defs>
-      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-        <polygon points="0 0, 6 3, 0 6" fill="rgba(132,228,223,0.92)"></polygon>
+      <marker id="arrowhead-pro" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 z" fill="rgba(166,244,238,0.95)"></path>
       </marker>
     </defs>
-    <line x1="50" y1="16" x2="18" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
-    <line x1="50" y1="16" x2="82" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
-    <line x1="18" y1="82" x2="82" y2="82" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"></line>
+    <line class="edge-left" x1="50" y1="22" x2="22" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
+    <line class="edge-right" x1="50" y1="22" x2="78" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
+    <line class="edge-bottom" x1="22" y1="78" x2="78" y2="78" marker-start="url(#arrowhead-pro)" marker-end="url(#arrowhead-pro)"></line>
   </svg>
 
   <div class="triangle-node patient">Paciente</div>
   <div class="triangle-node specialist">Especialista<br/>Alopático</div>
   <div class="triangle-node integrative">Depto. de<br/>Medicina Integrativa</div>
-
-  <div class="edge-label top-left">↔</div>
-  <div class="edge-label top-right">↔</div>
-  <div class="edge-label bottom">↔</div>
 </div>
 <p class="bridge-note">El departamento no compite con ninguna especialidad — dialoga con cada médico que trata al mismo paciente.</p>
 </div>
@@ -786,16 +782,16 @@ background: /assets/integration_bridge.png
   text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;
 }
 .bridge-title {
-  font-size: 1.7rem !important; color: #fff !important;
+  font-size: 1.6rem !important; color: #fff !important;
   font-family: 'Playfair Display', serif !important;
-  line-height: 1.3 !important; margin-bottom: 1.1rem !important;
+  line-height: 1.28 !important; margin-bottom: 1rem !important;
 }
 .bridge-accent { color: #4ECDC4 !important; -webkit-text-fill-color: #4ECDC4 !important; }
 .triangle-model {
   position: relative;
-  width: min(46rem, 90%);
-  height: 18rem;
-  margin: 0 auto 1rem;
+  width: min(50rem, 94%);
+  height: 17.4rem;
+  margin: 0.2rem auto 0.95rem;
 }
 .triangle-links {
   position: absolute;
@@ -804,52 +800,50 @@ background: /assets/integration_bridge.png
   height: 100%;
 }
 .triangle-links line {
-  stroke: rgba(132,228,223,0.82);
-  stroke-width: 1.8;
+  stroke: rgba(150,240,234,0.92);
+  stroke-width: 1.05;
+  filter: drop-shadow(0 0 6px rgba(132,228,223,0.24));
 }
 .triangle-node {
   position: absolute;
-  border-radius: 12px;
-  padding: 0.7rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1.35;
+  border-radius: 10px;
+  padding: 0.62rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 780;
+  line-height: 1.3;
   text-align: center;
-  min-width: 10rem;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  min-width: 11rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.24);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 .triangle-node.patient {
-  top: 0.2rem;
+  top: 0.05rem;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(232,144,106,0.18);
-  color: #E8906A;
-  border: 1.4px solid rgba(232,144,106,0.45);
+  background: rgba(232,144,106,0.2);
+  color: #F4A585;
+  border: 1.2px solid rgba(232,144,106,0.5);
 }
 .triangle-node.specialist {
-  left: 1rem;
-  bottom: 1.1rem;
-  background: rgba(26,107,107,0.26);
-  color: #9CF2EC;
-  border: 1.4px solid rgba(78,205,196,0.45);
+  left: 0.25rem;
+  bottom: 0.25rem;
+  background: rgba(14,73,69,0.52);
+  color: #C4F7F2;
+  border: 1.2px solid rgba(108,223,216,0.56);
 }
 .triangle-node.integrative {
-  right: 1rem;
-  bottom: 1.1rem;
-  background: rgba(78,205,196,0.24);
-  color: #fff;
-  border: 1.6px solid rgba(78,205,196,0.7);
+  right: 0.25rem;
+  bottom: 0.25rem;
+  background: rgba(27,121,115,0.52);
+  color: #E8FFFD;
+  border: 1.2px solid rgba(127,237,230,0.65);
 }
-.edge-label {
-  position: absolute;
-  color: rgba(132,228,223,0.95);
-  font-size: 1.1rem;
-  text-shadow: 0 0 10px rgba(132,228,223,0.25);
+.bridge-note {
+  font-size: 0.8rem;
+  color: rgba(184,224,220,0.76);
+  font-style: italic;
 }
-.edge-label.top-left { left: 33%; top: 37%; }
-.edge-label.top-right { right: 33%; top: 37%; }
-.edge-label.bottom { left: 50%; transform: translateX(-50%); bottom: 3.5rem; }
-.bridge-note { font-size: 0.82rem; color: rgba(180,215,210,0.7); font-style: italic; }
 </style>
 
 ---
