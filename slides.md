@@ -489,7 +489,7 @@ background: /assets/science_gutbrain.png
   </div>
   <div class="sci-glass-card orange-card">
     <div class="sci-num">②</div>
-    <h3>Eje Intestino-Cerebro</h3>
+    <h3>Microbiota Eje Intestino-Cerebro</h3>
     <p>El microbioma produce el 90% de la serotonina del cuerpo. La inflamación intestinal correlaciona con depresión y enfermedades autoinmunes.</p>
   </div>
   <div class="sci-glass-card green-card">
@@ -497,10 +497,15 @@ background: /assets/science_gutbrain.png
     <h3>Las 5 Leyes Biológicas</h3>
     <p>Toda enfermedad tiene una causa biológica: un conflicto emocional inesperado que impacta primero el cerebro, luego el órgano correspondiente.</p>
   </div>
-  <div class="sci-glass-card teal-card">
+  <div class="sci-glass-card teal-card sci-row2-left">
     <div class="sci-num">④</div>
     <h3>Neurociencia -Estrés-Cortisol-Hipocampo</h3>
     <p>Meta-análisis (35 estudios; 13,867 personas): mayor cortisol se asocia con menor volumen hipocampal (r = -0.11) y la depresión tardía muestra hipocampo más pequeño (g = -0.32).</p>
+  </div>
+  <div class="sci-glass-card green-card sci-row2-right">
+    <div class="sci-num">⑤</div>
+    <h3>Epigenética y Expresión Génica</h3>
+    <p>La evidencia humana confirma que estrés, trauma y hábitos modifican la metilación del ADN (ej. NR3C1/FKBP5), alterando inflamación y respuesta al estrés; cambios de estilo de vida pueden revertir parte de esas marcas.</p>
   </div>
 </div>
 </div>
@@ -515,11 +520,14 @@ background: /assets/science_gutbrain.png
   font-family: 'Playfair Display', serif !important; margin-bottom: 1.2rem !important;
   text-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
-.sci-glass-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.1rem; }
+.sci-glass-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem; }
 .sci-glass-card {
+  grid-column: span 2;
   background: rgba(4,18,16,0.78); border-radius: 14px; padding: 1.4rem; text-align: left;
   backdrop-filter: blur(14px); border: 1px solid rgba(78,205,196,0.18); position: relative;
 }
+.sci-row2-left { grid-column: 1 / span 3; }
+.sci-row2-right { grid-column: 4 / span 3; }
 .sci-glass-card.teal-card { border-top: 3px solid #4ECDC4; }
 .sci-glass-card.orange-card { border-top: 3px solid #E8906A; }
 .sci-glass-card.green-card { border-top: 3px solid #6FCF97; }
@@ -529,6 +537,12 @@ background: /assets/science_gutbrain.png
 .sci-glass-card.green-card h3 { color: #6FCF97; }
 .sci-glass-card p { color: rgba(190,225,222,0.82); font-size: 0.83rem; line-height: 1.55; }
 .sci-num { font-size: 2rem; font-weight: 900; opacity: 0.2; position: absolute; top: 0.6rem; right: 0.9rem; color: #fff; }
+@media (max-width: 900px) {
+  .sci-glass-grid { grid-template-columns: 1fr; }
+  .sci-glass-card,
+  .sci-row2-left,
+  .sci-row2-right { grid-column: 1 / -1; }
+}
 </style>
 
 ---
@@ -760,36 +774,52 @@ background: /assets/integration_bridge.png
 <style>
 .bridge-overlay {
   position: relative; z-index: 2; text-align: center;
-  max-width: 50rem; margin: 0 auto;
-  background: rgba(4,12,10,0.72); border-radius: 18px; padding: 2rem 2.5rem;
+  max-width: min(60rem, 94vw); margin: 0 auto;
+  background: rgba(4,12,10,0.72); border-radius: 18px; padding: 0.9rem 1.15rem;
   border: 1px solid rgba(78,205,196,0.15); backdrop-filter: blur(10px);
+  max-height: 82vh;
+  overflow: hidden;
 }
 .bridge-eyebrow {
-  font-size: 0.72rem; letter-spacing: 0.25em; color: #4ECDC4;
-  text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem;
+  font-size: 0.62rem; letter-spacing: 0.2em; color: #4ECDC4;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 0.28rem;
 }
 .bridge-title {
-  font-size: 1.58rem !important; color: #fff !important;
+  font-size: 1.22rem !important; color: #fff !important;
   font-family: 'Playfair Display', serif !important;
-  line-height: 1.26 !important; margin-bottom: 1rem !important;
+  line-height: 1.2 !important; margin-bottom: 0.45rem !important;
 }
 .bridge-accent { color: #4ECDC4 !important; -webkit-text-fill-color: #4ECDC4 !important; }
 .bridge-image-wrap {
-  width: min(51rem, 96%);
-  margin: 0.2rem auto 0.9rem;
+  width: 100%;
+  margin: 0.16rem auto 0.58rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .bridge-image {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: min(38vh, 19.5rem);
   height: auto;
+  object-fit: contain;
   display: block;
-  border-radius: 12px;
-  border: 1px solid rgba(120,230,223,0.25);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(120,230,223,0.28);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
 }
 .bridge-note {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  line-height: 1.28;
   color: rgba(184,224,220,0.76);
   font-style: italic;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .bridge-overlay { padding: 0.7rem 0.7rem; max-height: 84vh; }
+  .bridge-title { font-size: 1.05rem !important; margin-bottom: 0.35rem !important; }
+  .bridge-image { max-height: min(34vh, 13.8rem); }
+  .bridge-note { font-size: 0.66rem; }
 }
 </style>
 
@@ -804,7 +834,7 @@ background: /assets/integration_bridge.png
 <div class="path-steps">
   <div class="ps-item"><div class="ps-num">1</div><div class="ps-content"><strong>Consulta médica convencional</strong> — El especialista establece Dx + Tx</div></div>
   <div class="ps-arrow">↓</div>
-  <div class="ps-item"><div class="ps-num">2</div><div class="ps-content"><strong>Derivación a Medicina Integrativa</strong> — Por criterios clínicos: enfermedad crónica, polimedicación, escasa adherencia</div></div>
+  <div class="ps-item"><div class="ps-num">2</div><div class="ps-content"><strong>Derivación a Medicina Integrativa</strong> — Por criterios clínicos: enfermedad crónica, polimedicación, escasa adherencia, etc.</div></div>
   <div class="ps-arrow">↓</div>
   <div class="ps-item"><div class="ps-num">3</div><div class="ps-content"><strong>Evaluación Integrativa (90–120 min)</strong> — Biología del conflicto · Historia familiar · Terreno funcional</div></div>
   <div class="ps-arrow">↓</div>
@@ -900,7 +930,7 @@ background: /assets/conflict_biology.png
     <ul>
       <li>Anamnesis expandida con identificación del DHS</li>
       <li>Biodecodificación clínica</li>
-      <li>Trabajo sobre el "modo pensar" del paciente</li>
+      <li>Herramientas para reconfigurar mindset del paciente</li>
       <li>Raíz-causa de la enfermedad</li>
     </ul>
   </div>
@@ -943,6 +973,10 @@ background: /assets/conflict_biology.png
 }
 .pilar-col-card h4 { font-size: 0.85rem; color: #4ECDC4; margin-bottom: 0.4rem; }
 .pilar-col-card ul { padding-left: 1rem; color: rgba(185,220,216,0.85); font-size: 0.8rem; line-height: 1.65; }
+.pilar-orange-card { border-color: rgba(232,144,106,0.2); background: rgba(71,42,34,0.4); }
+.pilar-orange-card h4 { color: #E8906A; }
+.pilar-green-card { border-color: rgba(111,207,151,0.2); background: rgba(28,64,45,0.4); }
+.pilar-green-card h4 { color: #6FCF97; }
 </style>
 
 ---
@@ -956,8 +990,8 @@ background: /assets/family_constellation.png
 <h2>Terapias Sistémicas Familiares</h2>
 <p class="pilar-tagline">Constelaciones Familiares · Terapia Sistémica · El sistema familiar completo como mapa de salud</p>
 <div class="pilar-two-col">
-  <div class="pilar-col-card">
-    <h4 style="color:#E8906A">Herramientas</h4>
+  <div class="pilar-col-card pilar-orange-card">
+    <h4>Herramientas</h4>
     <ul>
       <li>Constelaciones familiares individuales y grupales</li>
       <li>Lectura del árbol genealógico como mapa de salud</li>
@@ -965,21 +999,47 @@ background: /assets/family_constellation.png
       <li>Trabajo con patrones de lealtad familiar</li>
     </ul>
   </div>
-  <div class="pilar-col-card">
-    <h4 style="color:#E8906A">El principio fundamental</h4>
-    <blockquote class="dark-quote">
-      "Muchas veces el paciente hereda el conflicto de sus padres o abuelos. Tratar solo al individuo es leer la última página de una novela."
-    </blockquote>
-    <p style="color:rgba(185,220,216,0.75);font-size:0.8rem;margin-top:0.5rem">La enfermedad mejora cuando el sistema familiar mejora.</p>
+  <div class="pilar-col-card pilar-orange-card">
+    <h4>El principio fundamental</h4>
+    <ul>
+      <li>Muchas veces el paciente hereda el conflicto de sus padres o abuelos.</li>
+      <li>Tratar solo al individuo es leer la última página de una novela.</li>
+      <li>La enfermedad mejora cuando el sistema familiar mejora.</li>
+    </ul>
   </div>
 </div>
 </div>
 
 <style>
-.dark-quote {
-  font-style: italic; font-size: 0.8rem; color: rgba(255,210,180,0.85);
-  border-left: 2px solid #E8906A; padding-left: 0.75rem; margin: 0; line-height: 1.55;
+.pilar-overlay {
+  position: relative; z-index: 2; max-width: 52rem; margin: 0 auto;
+  background: rgba(4,12,10,0.80); border-radius: 18px; padding: 1.6rem 2rem;
+  border: 1px solid rgba(78,205,196,0.18); backdrop-filter: blur(14px);
 }
+.pilar-badge {
+  display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em;
+  font-weight: 800; text-transform: uppercase; border-radius: 999px;
+  padding: 0.2rem 0.9rem; margin-bottom: 0.4rem;
+}
+.pilar-badge.teal-badge { background: rgba(78,205,196,0.2); color: #4ECDC4; border: 1px solid rgba(78,205,196,0.4); }
+.pilar-badge.orange-badge { background: rgba(232,144,106,0.2); color: #E8906A; border: 1px solid rgba(232,144,106,0.4); }
+.pilar-badge.green-badge { background: rgba(111,207,151,0.15); color: #6FCF97; border: 1px solid rgba(111,207,151,0.4); }
+.pilar-overlay h2 {
+  font-size: 1.6rem !important; color: #fff !important;
+  font-family: 'Playfair Display', serif !important; margin: 0 0 0.3rem !important;
+}
+.pilar-tagline { font-size: 0.85rem; color: rgba(180,215,210,0.75); margin-bottom: 1rem; font-style: italic; }
+.pilar-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pilar-col-card {
+  background: rgba(18,52,50,0.45); border-radius: 10px;
+  padding: 0.9rem 1rem; border: 1px solid rgba(78,205,196,0.1);
+}
+.pilar-col-card h4 { font-size: 0.85rem; color: #4ECDC4; margin-bottom: 0.4rem; }
+.pilar-col-card ul { padding-left: 1rem; color: rgba(185,220,216,0.85); font-size: 0.8rem; line-height: 1.65; }
+.pilar-orange-card { border-color: rgba(232,144,106,0.2); background: rgba(71,42,34,0.4); }
+.pilar-orange-card h4 { color: #E8906A; }
+.pilar-green-card { border-color: rgba(111,207,151,0.2); background: rgba(28,64,45,0.4); }
+.pilar-green-card h4 { color: #6FCF97; }
 </style>
 
 ---
@@ -993,8 +1053,8 @@ background: /assets/functional_terrain.png
 <h2>Medicina Funcional &amp; Regulación del Terreno</h2>
 <p class="pilar-tagline">Microbiota · Reflexología · Acupuntura · El cuerpo como sistema integrado</p>
 <div class="pilar-two-col">
-  <div class="pilar-col-card">
-    <h4 style="color:#6FCF97">Herramientas</h4>
+  <div class="pilar-col-card pilar-green-card">
+    <h4>Herramientas</h4>
     <ul>
       <li>Dieta antiinflamatoria personalizada</li>
       <li>Protocolo de microbiota intestinal</li>
@@ -1003,16 +1063,48 @@ background: /assets/functional_terrain.png
       <li>Acupuntura (complemento)</li>
     </ul>
   </div>
-  <div class="pilar-col-card">
-    <h4 style="color:#6FCF97">El principio fundamental</h4>
-    <p style="color:rgba(185,220,216,0.85);font-size:0.82rem;line-height:1.65">
-      No puedes resolver un conflicto emocional en un cuerpo inflamado.<br/><br/>
-      El terreno biológico determina si la enfermedad florece o se resuelve.<br/><br/>
-      La medicina funcional <strong style="color:#6FCF97">prepara el cuerpo para sanar.</strong>
-    </p>
+  <div class="pilar-col-card pilar-green-card">
+    <h4>El principio fundamental</h4>
+    <ul>
+      <li>No puedes resolver un conflicto emocional en un cuerpo inflamado.</li>
+      <li>El terreno biológico determina si la enfermedad florece o se resuelve.</li>
+      <li>La medicina funcional prepara el cuerpo para sanar.</li>
+    </ul>
   </div>
 </div>
 </div>
+
+<style>
+.pilar-overlay {
+  position: relative; z-index: 2; max-width: 52rem; margin: 0 auto;
+  background: rgba(4,12,10,0.80); border-radius: 18px; padding: 1.6rem 2rem;
+  border: 1px solid rgba(78,205,196,0.18); backdrop-filter: blur(14px);
+}
+.pilar-badge {
+  display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em;
+  font-weight: 800; text-transform: uppercase; border-radius: 999px;
+  padding: 0.2rem 0.9rem; margin-bottom: 0.4rem;
+}
+.pilar-badge.teal-badge { background: rgba(78,205,196,0.2); color: #4ECDC4; border: 1px solid rgba(78,205,196,0.4); }
+.pilar-badge.orange-badge { background: rgba(232,144,106,0.2); color: #E8906A; border: 1px solid rgba(232,144,106,0.4); }
+.pilar-badge.green-badge { background: rgba(111,207,151,0.15); color: #6FCF97; border: 1px solid rgba(111,207,151,0.4); }
+.pilar-overlay h2 {
+  font-size: 1.6rem !important; color: #fff !important;
+  font-family: 'Playfair Display', serif !important; margin: 0 0 0.3rem !important;
+}
+.pilar-tagline { font-size: 0.85rem; color: rgba(180,215,210,0.75); margin-bottom: 1rem; font-style: italic; }
+.pilar-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pilar-col-card {
+  background: rgba(18,52,50,0.45); border-radius: 10px;
+  padding: 0.9rem 1rem; border: 1px solid rgba(78,205,196,0.1);
+}
+.pilar-col-card h4 { font-size: 0.85rem; color: #4ECDC4; margin-bottom: 0.4rem; }
+.pilar-col-card ul { padding-left: 1rem; color: rgba(185,220,216,0.85); font-size: 0.8rem; line-height: 1.65; }
+.pilar-orange-card { border-color: rgba(232,144,106,0.2); background: rgba(71,42,34,0.4); }
+.pilar-orange-card h4 { color: #E8906A; }
+.pilar-green-card { border-color: rgba(111,207,151,0.2); background: rgba(28,64,45,0.4); }
+.pilar-green-card h4 { color: #6FCF97; }
+</style>
 
 ---
 layout: center
@@ -1053,10 +1145,37 @@ background: /assets/conflict_biology.png
   border: 1px solid rgba(78,205,196,0.08); line-height: 1.4;
 }
 .obj-glass-item.wide { grid-column: 1 / -1; background: rgba(26,107,107,0.25); border-color: rgba(78,205,196,0.2); }
-.obj-check { flex-shrink: 0; font-weight: 800; font-size: 0.95rem; }
-.obj-check.teal { color: #4ECDC4; }
-.obj-check.orange { color: #E8906A; }
-.obj-check.green { color: #6FCF97; }
+.obj-check {
+  flex-shrink: 0;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 1.12rem;
+  line-height: 1;
+  margin-top: 0.02rem;
+}
+.obj-check.teal {
+  color: #8DF6F0;
+  background: rgba(78,205,196,0.22);
+  border: 1px solid rgba(78,205,196,0.45);
+  text-shadow: 0 0 10px rgba(78,205,196,0.45);
+}
+.obj-check.orange {
+  color: #FFD8C8;
+  background: rgba(232,144,106,0.24);
+  border: 1px solid rgba(232,144,106,0.5);
+  text-shadow: 0 0 10px rgba(232,144,106,0.4);
+}
+.obj-check.green {
+  color: #D8FFE8;
+  background: rgba(111,207,151,0.24);
+  border: 1px solid rgba(111,207,151,0.5);
+  text-shadow: 0 0 10px rgba(111,207,151,0.45);
+}
 .obj-glass-item strong { color: #fff; }
 </style>
 
@@ -1138,7 +1257,7 @@ background: /assets/future_hospital.png
     <p>Refleja los tres niveles de atención del modelo. Claro para el paciente.</p>
   </div>
   <div class="name-glass-card">
-    <h3>Unidad de Medicina Complementaria y Biológica</h3>
+    <h3>Departamento de Medicina integrativa al servicio de la vida</h3>
     <p>Científico y preciso. Aleja explícitamente del concepto "alternativo".</p>
   </div>
   <div class="name-glass-card">
@@ -1194,9 +1313,9 @@ background: /assets/future_hospital.png
   <blockquote class="bio-hero-quote">"No es una terapeuta. Es una médico que practica medicina desde la raíz."</blockquote>
   <div class="bio-items-glass">
     <div class="bio-item-glass"><span class="bi">🏥</span><span><strong>CMP 36103</strong> — Médico colegiada y habilitada</span></div>
-    <div class="bio-item-glass"><span class="bi">⏱️</span><span><strong>+15 años</strong> en Medicina Ocupacional</span></div>
+    <div class="bio-item-glass"><span class="bi">⏱️</span><span><strong>+20 años</strong> en Medicina Integrativa y Salud Ocupacional</span></div>
     <div class="bio-item-glass"><span class="bi">🧬</span><span><strong>Nueva Medicina Germánica</strong> (Dr. Hamer)</span></div>
-    <div class="bio-item-glass"><span class="bi">👨‍👩‍👧</span><span><strong>Constelaciones Familiares</strong> / Terapia Sistémica</span></div>
+    <div class="bio-item-glass"><span class="bi">👨‍👩‍👧</span><span><strong>Terapia Sistémica Familiar</strong> / Constelaciones Familiares</span></div>
     <div class="bio-item-glass"><span class="bi">🌿</span><span><strong>Medicina Funcional</strong></span></div>
     <div class="bio-item-glass"><span class="bi">🌐</span><span><strong>Clínica Magga</strong> · La Molina · clinicamagga.com</span></div>
   </div>
@@ -1243,7 +1362,7 @@ background: /assets/implementation_path.png
 
 # Plan de Implementación
 
-<p class="section-sub">3 fases · 18 meses</p>
+<p class="section-sub">3 fases</p>
 
 </div>
 
@@ -1254,7 +1373,7 @@ background: /assets/implementation_path.png
 ---
 
 <div class="phase-overlay teal-phase">
-<div class="phase-badge">FASE 1 · MESES 0–3</div>
+<div class="phase-badge">FASE 1</div>
 <h2>Fundación</h2>
 <div class="phase-cards-grid">
   <div class="phase-glass-card">
@@ -1269,7 +1388,7 @@ background: /assets/implementation_path.png
   <div class="phase-glass-card">
     <h4>🏗️ Instalación Física</h4>
     <ul>
-      <li>2–3 consultorios en el Hospital de Salud Mental</li>
+      <li>2–3 consultorios</li>
       <li>Adquisición de equipamiento básico</li>
       <li>Sistema de agendamiento integrado</li>
       <li>Selección y onboarding del personal de apoyo</li>
@@ -1394,7 +1513,7 @@ background: /assets/implementation_path.png
 ---
 
 <div style="position:relative;z-index:2;max-width:61rem;margin:0 auto;background:rgba(4,12,10,0.84);border-radius:20px;padding:1.5rem 1.8rem;border:1px solid rgba(232,144,106,0.28);backdrop-filter:blur(14px);box-shadow:0 16px 42px rgba(0,0,0,0.42);">
-  <div style="display:inline-block;font-size:0.72rem;letter-spacing:0.22em;font-weight:800;text-transform:uppercase;border-radius:999px;padding:0.24rem 0.9rem;margin-bottom:0.5rem;background:rgba(232,144,106,0.18);color:#E8906A;border:1px solid rgba(232,144,106,0.45);">FASE 2 · MESES 3–9</div>
+  <div style="display:inline-block;font-size:0.72rem;letter-spacing:0.22em;font-weight:800;text-transform:uppercase;border-radius:999px;padding:0.24rem 0.9rem;margin-bottom:0.5rem;background:rgba(232,144,106,0.18);color:#E8906A;border:1px solid rgba(232,144,106,0.45);">FASE 2</div>
   <h2 style="margin:0 0 0.95rem !important;font-size:2.05rem !important;line-height:1.08 !important;color:#FFF !important;font-family:'Playfair Display',serif !important;">Lanzamiento</h2>
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.95rem;">
     <div style="background:rgba(15,34,32,0.74);border:1px solid rgba(232,144,106,0.25);border-top:3px solid #E8906A;border-radius:12px;padding:0.95rem;">
@@ -1418,10 +1537,10 @@ background: /assets/implementation_path.png
     <div style="background:rgba(15,34,32,0.74);border:1px solid rgba(232,144,106,0.25);border-top:3px solid #E8906A;border-radius:12px;padding:0.95rem;">
       <h4 style="margin:0 0 0.45rem !important;color:#E8906A !important;font-size:1.02rem !important;">🎓 Talleres Grupales</h4>
       <div style="display:flex;flex-direction:column;gap:0.34rem;">
-        <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Psicoeducación: biología del conflicto</div>
+        <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Psicoeducación para paciente y familia: biología del conflicto</div>
         <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Taller de dieta funcional y microbiota</div>
         <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Taller sistémico-familiar introductorio</div>
-        <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Materiales para el público general</div>
+        <div style="color:rgba(210,236,233,0.92);font-size:0.86rem;line-height:1.45;">• Materiales audiovisuales de alto impacto</div>
       </div>
     </div>
   </div>
@@ -1434,7 +1553,7 @@ background: /assets/implementation_path.png
 ---
 
 <div style="position:relative;z-index:2;max-width:61rem;margin:0 auto;background:rgba(4,12,10,0.84);border-radius:20px;padding:1.5rem 1.8rem;border:1px solid rgba(111,207,151,0.3);backdrop-filter:blur(14px);box-shadow:0 16px 42px rgba(0,0,0,0.42);">
-  <div style="display:inline-block;font-size:0.72rem;letter-spacing:0.22em;font-weight:800;text-transform:uppercase;border-radius:999px;padding:0.24rem 0.9rem;margin-bottom:0.5rem;background:rgba(111,207,151,0.16);color:#6FCF97;border:1px solid rgba(111,207,151,0.42);">FASE 3 · MESES 9–18</div>
+  <div style="display:inline-block;font-size:0.72rem;letter-spacing:0.22em;font-weight:800;text-transform:uppercase;border-radius:999px;padding:0.24rem 0.9rem;margin-bottom:0.5rem;background:rgba(111,207,151,0.16);color:#6FCF97;border:1px solid rgba(111,207,151,0.42);">FASE 3</div>
   <h2 style="margin:0 0 0.95rem !important;font-size:2.05rem !important;line-height:1.08 !important;color:#FFF !important;font-family:'Playfair Display',serif !important;">Expansión y Evidencia</h2>
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.95rem;">
     <div style="background:rgba(12,36,29,0.76);border:1px solid rgba(111,207,151,0.24);border-top:3px solid #6FCF97;border-radius:12px;padding:0.95rem;">
@@ -1475,7 +1594,7 @@ background: /assets/implementation_path.png
   <img src="/assets/implementation_path.png" alt="Ruta de implementación" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
 </div>
 
-<div class="full-caption-bar">3 fases · 18 meses · Del diseño institucional a la evidencia publicada</div>
+<div class="full-caption-bar">3 fases · ? meses · Del diseño institucional a la evidencia publicada</div>
 
 ---
 layout: center
@@ -1484,7 +1603,7 @@ background: /assets/investment_growth.png
 ---
 
 <div class="invest-overlay">
-<div class="invest-eyebrow">LA INVERSIÓN</div>
+<div class="invest-eyebrow">LA INVERSIÓN - EN REVISION</div>
 <div class="invest-two-col">
   <div class="invest-glass-card">
     <h3 class="invest-h teal-h">Estructura del Departamento</h3>
@@ -1497,14 +1616,11 @@ background: /assets/investment_growth.png
     <h3 class="invest-h orange-h">Compensación de la Directora</h3>
     <div class="invest-row"><span>Título</span><span class="invest-val">Directora / Jefa del Depto.</span></div>
     <div class="invest-row"><span>Base mensual</span><span class="invest-val big-val">S/ 8,000–10,000</span></div>
-    <div class="invest-row"><span>Revenue share</span><span class="invest-val">15–20% sobre facturación &gt; S/ 25k/mes</span></div>
+    <div class="invest-row"><span>Revenue share</span><span class="invest-val">15–20% sobre facturación mensual</span></div>
     <div class="invest-row"><span>Research budget</span><span class="invest-val">S/ 1,500/mes</span></div>
   </div>
 </div>
-<div class="invest-projector">
-  <span class="inv-label">Proyección a capacidad:</span>
-  15 pac/día × 20 días × S/ 120 = <strong>S/ 36,000/mes</strong> &nbsp;·&nbsp; Break-even en <strong>8–9 pacientes/día</strong>
-</div>
+
 </div>
 
 <style>
