@@ -6,7 +6,7 @@ info: |
   en el Hospital de la Solidaridad · SISOL
   Dra. Ximena Chirinos Orbegozo · CMP 36103
 colorSchema: dark
-background: ./assets/cover_hero.png
+background: /assets/cover_hero.png
 fonts:
   sans: 'Lato'
   serif: 'Playfair Display'
@@ -62,7 +62,7 @@ h1 {
 ---
 layout: center
 title: "Hamer Quote"
-background: ./assets/quote_atmosphere.png
+background: /assets/quote_atmosphere.png
 ---
 
 <div class="quote-overlay">
@@ -99,7 +99,7 @@ En 1978, un médico alemán perdió a su hijo. Meses después, le diagnosticaron
 ---
 layout: center
 title: "Problema de la Medicina Moderna"
-background: ./assets/modern_medicine_split.png
+background: /assets/modern_medicine_split.png
 ---
 
 <div class="split-overlay">
@@ -149,7 +149,7 @@ background: ./assets/modern_medicine_split.png
 ---
 layout: center
 title: "Salud Física en Perú"
-background: ./assets/mental_health_lima.png
+background: /assets/mental_health_lima.png
 ---
 
 <div class="stats-overlay">
@@ -178,7 +178,7 @@ background: ./assets/mental_health_lima.png
 ---
 layout: center
 title: "Salud Mental en Perú"
-background: ./assets/mental_health_lima.png
+background: /assets/mental_health_lima.png
 ---
 
 <div class="stats-overlay">
@@ -207,7 +207,7 @@ background: ./assets/mental_health_lima.png
 ---
 layout: center
 title: "Paciente como Sistema"
-background: ./assets/patient_system.png
+background: /assets/patient_system.png
 ---
 
 <div class="system-overlay">
@@ -255,7 +255,7 @@ background: ./assets/patient_system.png
 ---
 layout: center
 title: "La Ciencia que lo Sustenta"
-background: ./assets/science_gutbrain.png
+background: /assets/science_gutbrain.png
 ---
 
 <div class="section-img-overlay">
@@ -284,11 +284,11 @@ background: ./assets/science_gutbrain.png
 ---
 layout: center
 title: "Ciencia Visual"
-background: ./assets/science_gutbrain.png
+background: /assets/science_gutbrain.png
 ---
 
 <div class="science-visual-wrap">
-  <img src="./assets/science_gutbrain.png" alt="Eje intestino-cerebro" class="science-visual-img" />
+  <img src="/assets/science_gutbrain.png" alt="Eje intestino-cerebro" class="science-visual-img" />
 </div>
 
 <div class="full-caption-bar">El eje intestino-cerebro: la biología del conflicto hecha visible</div>
@@ -314,7 +314,7 @@ background: ./assets/science_gutbrain.png
 ---
 layout: center
 title: "Tres Fundamentos Científicos"
-background: ./assets/science_gutbrain.png
+background: /assets/science_gutbrain.png
 ---
 
 <div class="sci-grid-overlay">
@@ -367,7 +367,7 @@ background: ./assets/science_gutbrain.png
 ---
 layout: center
 title: "Historia de Hamer"
-background: ./assets/hamer_story.png
+background: /assets/hamer_story.png
 ---
 
 <div class="hamer-overlay">
@@ -423,7 +423,7 @@ background: ./assets/hamer_story.png
 ---
 layout: center
 title: "La Propuesta"
-background: ./assets/integration_bridge.png
+background: /assets/integration_bridge.png
 ---
 
 <div class="bridge-overlay">
@@ -471,7 +471,7 @@ background: ./assets/integration_bridge.png
 ---
 layout: center
 title: "Modelo de Atención"
-background: ./assets/integration_bridge.png
+background: /assets/integration_bridge.png
 ---
 
 <div class="pathway-overlay">
@@ -520,7 +520,7 @@ background: ./assets/integration_bridge.png
 ---
 layout: center
 title: "Los Tres Pilares"
-background: ./assets/three_pillars.png
+background: /assets/three_pillars.png
 ---
 
 <div class="section-img-overlay">
@@ -532,11 +532,11 @@ background: ./assets/three_pillars.png
 ---
 layout: center
 title: "Tres Pilares"
-background: ./assets/three_pillars.png
+background: /assets/three_pillars.png
 ---
 
 <div class="pillars-visual-wrap">
-  <img src="./assets/three_pillars.png" alt="Tres pilares del departamento" class="pillars-visual-img" />
+  <img src="/assets/three_pillars.png" alt="Tres pilares del departamento" class="pillars-visual-img" />
 </div>
 
 <div class="full-caption-bar">Biología del Conflicto &nbsp;·&nbsp; Terapias Sistémicas &nbsp;·&nbsp; Medicina Funcional</div>
@@ -562,7 +562,7 @@ background: ./assets/three_pillars.png
 ---
 layout: center
 title: "Pilar 1: Biología del Conflicto"
-background: ./assets/conflict_biology.png
+background: /assets/conflict_biology.png
 ---
 
 <div class="pilar-overlay">
@@ -623,7 +623,7 @@ background: ./assets/conflict_biology.png
 ---
 layout: center
 title: "Pilar 2: Terapias Sistémicas"
-background: ./assets/family_constellation.png
+background: /assets/family_constellation.png
 ---
 
 <div class="pilar-overlay">
@@ -660,7 +660,7 @@ background: ./assets/family_constellation.png
 ---
 layout: center
 title: "Pilar 3: Medicina Funcional"
-background: ./assets/functional_terrain.png
+background: /assets/functional_terrain.png
 ---
 
 <div class="pilar-overlay">
@@ -692,7 +692,7 @@ background: ./assets/functional_terrain.png
 ---
 layout: center
 title: "Objetivos Medibles"
-background: ./assets/conflict_biology.png
+background: /assets/conflict_biology.png
 ---
 
 <div class="objectives-overlay">
@@ -738,7 +738,7 @@ background: ./assets/conflict_biology.png
 ---
 layout: center
 title: "Impacto Esperado"
-background: ./assets/mental_health_lima.png
+background: /assets/mental_health_lima.png
 ---
 
 <div class="fact-impact-overlay">
@@ -778,7 +778,7 @@ background: ./assets/mental_health_lima.png
 ---
 layout: center
 title: "El Nombre del Departamento"
-background: ./assets/future_hospital.png
+background: /assets/future_hospital.png
 ---
 
 <div class="section-img-overlay">
@@ -792,7 +792,7 @@ background: ./assets/future_hospital.png
 ---
 layout: center
 title: "Opciones de Nombre"
-background: ./assets/future_hospital.png
+background: /assets/future_hospital.png
 ---
 
 <div class="names-overlay">
@@ -859,7 +859,7 @@ background: ./assets/future_hospital.png
 ---
 layout: center
 title: "Perfil de la Directora"
-background: ./assets/future_hospital.png
+background: /assets/future_hospital.png
 ---
 
 <div class="bio-overlay">
@@ -911,7 +911,7 @@ background: ./assets/future_hospital.png
 ---
 layout: center
 title: "Plan de Implementación"
-background: ./assets/implementation_path.png
+background: /assets/implementation_path.png
 ---
 
 <div class="section-img-overlay">
@@ -925,7 +925,7 @@ background: ./assets/implementation_path.png
 ---
 layout: center
 title: "Fase 1"
-background: ./assets/implementation_path.png
+background: /assets/implementation_path.png
 ---
 
 <div class="phase-overlay teal-phase">
@@ -1065,7 +1065,7 @@ background: ./assets/implementation_path.png
 ---
 layout: center
 title: "Fase 2"
-background: ./assets/implementation_path.png
+background: /assets/implementation_path.png
 ---
 
 <div style="position:relative;z-index:2;max-width:61rem;margin:0 auto;background:rgba(4,12,10,0.84);border-radius:20px;padding:1.5rem 1.8rem;border:1px solid rgba(232,144,106,0.28);backdrop-filter:blur(14px);box-shadow:0 16px 42px rgba(0,0,0,0.42);">
@@ -1105,7 +1105,7 @@ background: ./assets/implementation_path.png
 ---
 layout: center
 title: "Fase 3"
-background: ./assets/implementation_path.png
+background: /assets/implementation_path.png
 ---
 
 <div style="position:relative;z-index:2;max-width:61rem;margin:0 auto;background:rgba(4,12,10,0.84);border-radius:20px;padding:1.5rem 1.8rem;border:1px solid rgba(111,207,151,0.3);backdrop-filter:blur(14px);box-shadow:0 16px 42px rgba(0,0,0,0.42);">
@@ -1143,11 +1143,11 @@ background: ./assets/implementation_path.png
 ---
 layout: center
 title: "Implementación"
-background: ./assets/implementation_path.png
+background: /assets/implementation_path.png
 ---
 
 <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-  <img src="./assets/implementation_path.png" alt="Ruta de implementación" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+  <img src="/assets/implementation_path.png" alt="Ruta de implementación" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
 </div>
 
 <div class="full-caption-bar">3 fases · 18 meses · Del diseño institucional a la evidencia publicada</div>
@@ -1155,7 +1155,7 @@ background: ./assets/implementation_path.png
 ---
 layout: center
 title: "Inversión"
-background: ./assets/investment_growth.png
+background: /assets/investment_growth.png
 ---
 
 <div class="invest-overlay">
@@ -1212,7 +1212,7 @@ background: ./assets/investment_growth.png
 ---
 layout: center
 title: "Evidencia Internacional"
-background: ./assets/quote_atmosphere.png
+background: /assets/quote_atmosphere.png
 ---
 
 <div class="quote-overlay">
@@ -1236,7 +1236,7 @@ Brasil integró las terapias complementarias en su sistema público de salud en 
 ---
 layout: center
 title: "Visión de Futuro"
-background: ./assets/future_hospital.png
+background: /assets/future_hospital.png
 ---
 
 <div class="closing-overlay">
@@ -1267,7 +1267,7 @@ background: ./assets/future_hospital.png
 ---
 layout: center
 title: "Cierre"
-background: ./assets/cover_hero.png
+background: /assets/cover_hero.png
 ---
 
 <div class="end-overlay">
