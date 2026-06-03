@@ -86,12 +86,26 @@ function bindPinchZoomFallback() {
   let panStartTy = 0
   let isPanning = false
 
+  const resetZoom = () => {
+    const target = getTarget()
+    if (!target) return
+    currentScale = 1
+    currentTx = 0
+    currentTy = 0
+    target.style.transformOrigin = 'center center'
+    target.style.transform = 'none'
+  }
+
+  w.__slidevResetZoom = resetZoom
+
   const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
   const distance = (a: Touch, b: Touch) => Math.hypot(b.clientX - a.clientX, b.clientY - a.clientY)
   const center = (a: Touch, b: Touch) => ({ x: (a.clientX + b.clientX) / 2, y: (a.clientY + b.clientY) / 2 })
 
   const getTarget = () =>
-    (document.querySelector('.slidev-slide-content') ||
+    (document.querySelector('#slide-content .slidev-layout') ||
+      document.querySelector('#slide-content') ||
+      document.querySelector('.slidev-slide-content') ||
       document.querySelector('.slidev-layout') ||
       document.querySelector('#app')) as HTMLElement | null
 
@@ -120,11 +134,7 @@ function bindPinchZoomFallback() {
     const target = getTarget()
     if (!target) return
     if (currentScale <= 1.001) {
-      currentScale = 1
-      currentTx = 0
-      currentTy = 0
-      target.style.transformOrigin = 'center center'
-      target.style.transform = 'translate(0px, 0px) scale(1)'
+      resetZoom()
       return
     }
 
@@ -135,6 +145,28 @@ function bindPinchZoomFallback() {
     target.style.transformOrigin = 'center center'
     target.style.transform = `translate(${currentTx}px, ${currentTy}px) scale(${currentScale})`
   }
+
+  const lockGestureSurface = () => {
+    const target = getTarget()
+    if (target) {
+      target.style.touchAction = 'none'
+      target.style.overscrollBehavior = 'contain'
+      target.style.userSelect = 'none'
+    }
+
+    const slideContainer = document.querySelector('#slide-container') as HTMLElement | null
+    if (slideContainer) {
+      slideContainer.style.touchAction = 'none'
+      slideContainer.style.overscrollBehavior = 'contain'
+    }
+
+    document.documentElement.style.touchAction = 'none'
+    document.body.style.touchAction = 'none'
+    document.body.style.overscrollBehavior = 'contain'
+  }
+
+  lockGestureSurface()
+  resetZoom()
 
   const inCustomMapPanel = (target: EventTarget | null) => {
     const panel = document.getElementById('custom-map-panel')
@@ -179,12 +211,12 @@ function bindPinchZoomFallback() {
         const d = distance(ev.touches[0], ev.touches[1])
         if (!pinchStartDistance) pinchStartDistance = d
         const factor = d / pinchStartDistance
-        const dampedFactor = 1 + (factor - 1) * 0.4
-        currentScale = clamp(pinchStartScale * dampedFactor, 1, 1.9)
+        const dampedFactor = 1 + (factor - 1) * 0.25
+        currentScale = clamp(pinchStartScale * dampedFactor, 1, 1.6)
 
         const c = center(ev.touches[0], ev.touches[1])
-        currentTx = pinchStartTx + (c.x - pinchStartCenterX) * 0.35
-        currentTy = pinchStartTy + (c.y - pinchStartCenterY) * 0.35
+        currentTx = pinchStartTx + (c.x - pinchStartCenterX) * 0.22
+        currentTy = pinchStartTy + (c.y - pinchStartCenterY) * 0.22
         applyScale()
         return
       }
@@ -205,6 +237,7 @@ function bindPinchZoomFallback() {
       if (ev.touches.length === 0) {
         pinchStartDistance = 0
         isPanning = false
+        if (currentScale <= 1.001) resetZoom()
       }
 
       if (ev.touches.length === 1 && currentScale > 1.001) {
@@ -237,7 +270,23 @@ function mountMapPanel() {
 
   ensureMobileZoomEnabled()
   bindPinchZoomFallback()
+  ;(window as any).__slidevResetZoom?.()
   document.body.classList.add('custom-map-active')
+
+  const slideContent = document.querySelector('#slide-content') as HTMLElement | null
+  const slideContainer = document.querySelector('#slide-container') as HTMLElement | null
+  if (slideContent) {
+    slideContent.style.touchAction = 'none'
+    slideContent.style.overscrollBehavior = 'contain'
+    slideContent.style.userSelect = 'none'
+  }
+  if (slideContainer) {
+    slideContainer.style.touchAction = 'none'
+    slideContainer.style.overscrollBehavior = 'contain'
+  }
+  document.documentElement.style.touchAction = 'none'
+  document.body.style.touchAction = 'none'
+  document.body.style.overscrollBehavior = 'contain'
 
   let root = document.getElementById('custom-map-panel')
   if (!root) {
