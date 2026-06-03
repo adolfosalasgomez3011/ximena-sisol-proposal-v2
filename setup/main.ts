@@ -107,7 +107,10 @@ function mountMapPanel() {
     const style = document.createElement('style')
     style.id = 'custom-map-style'
     style.textContent = `
-      html, body, #app, #slidev-root { touch-action: pan-x pan-y pinch-zoom !important; }
+      html, body, #app, #slidev-root,
+      .slidev-layout, .slidev-page, .slidev-slide-container, .slidev-slide-content {
+        touch-action: pan-x pan-y pinch-zoom !important;
+      }
       #custom-map-panel { position: fixed; top: 12px; right: 14px; width: 64px; z-index: 95; transition: width .22s ease; }
       #custom-map-panel:hover, #custom-map-panel:focus-within, #custom-map-panel.open { width: 340px; }
       #custom-map-panel .map-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; border-radius: 10px; border: 1px solid rgba(116,239,231,.45); background: rgba(6,16,16,.86); color: #a9fff8; padding: .35rem .75rem; font-size: .68rem; letter-spacing: .14em; font-weight: 800; overflow: hidden; }

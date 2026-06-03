@@ -331,7 +331,7 @@ nav .slidev-icon-btn {
   background: rgba(7, 20, 20, 0.86) !important;
   border: 1px solid rgba(122, 240, 232, 0.38) !important;
   color: #9FF9F2 !important;
-  box-shadow: 0 0 0 1px rgba(122, 240, 232, 0.14), 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
 }
 
 nav .slidev-icon-btn:hover {
@@ -374,7 +374,7 @@ nav .slidev-icon-btn[title="Go to next slide"]:hover {
   transform: scale(1.06) !important;
   background: rgba(18, 52, 50, 0.96) !important;
   border-color: rgba(122, 240, 232, 0.9) !important;
-  box-shadow: 0 0 0 1px rgba(122, 240, 232, 0.2), 0 10px 26px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45) !important;
 }
 
 nav .slidev-icon-btn[title="Go to previous slide"] svg,
