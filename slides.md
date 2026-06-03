@@ -111,7 +111,7 @@ background: ./assets/modern_medicine_split.png
     <li><strong>80% de las consultas</strong> son condiciones crónicas</li>
     <li>El paciente regresa. Y regresa. Y regresa.</li>
     <li>La medicación aumenta. La adherencia cae.</li>
-    <li class="highlight-item">El órgano recibe tratamiento. <strong>La persona, no.</strong></li>
+    <li class="highlight-item">El órgano recibe tratamiento. <strong>La persona, NO.</strong></li>
   </ul>
   <div class="opp-badge">Esta no es una crítica. Es una oportunidad.</div>
 </div>
@@ -145,6 +145,35 @@ background: ./assets/modern_medicine_split.png
   font-size: 0.85rem; font-style: italic; color: #4ECDC4; border-radius: 0 8px 8px 0;
 }
 </style>
+
+---
+layout: center
+title: "Salud Física en Perú"
+background: ./assets/mental_health_lima.png
+---
+
+<div class="stats-overlay">
+<div class="stats-header">La Brecha en Salud Física del Perú</div>
+<div class="stats-cards">
+  <div class="stat-card big">
+    <div class="stat-num">38.1%</div>
+    <div class="stat-label">Buscó atención ante problema de salud</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">91.1%</div>
+    <div class="stat-label">Cuenta con seguro de salud</div>
+  </div>
+  <div class="stat-card accent">
+    <div class="stat-num">48.2%</div>
+    <div class="stat-label">Accedió a medición de presión arterial en 12 meses</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num">42.1%</div>
+    <div class="stat-label">Con hipertensión actual sin control en 12 meses</div>
+  </div>
+</div>
+<div class="stats-footer">La cobertura existe; la continuidad diagnóstica y el seguimiento siguen siendo la brecha.</div>
+</div>
 
 ---
 layout: center
