@@ -62,10 +62,45 @@ function ensureMobileZoomEnabled() {
   document.head.appendChild(meta)
 }
 
+function blockMobileTouchNavigation() {
+  const w = window as any
+  if (w.__slidevTouchNavBlocked) return
+  w.__slidevTouchNavBlocked = true
+
+  if (window.matchMedia('(min-width: 901px)').matches) return
+
+  const inCustomMapPanel = (target: EventTarget | null) => {
+    const panel = document.getElementById('custom-map-panel')
+    return !!(panel && target instanceof Node && panel.contains(target))
+  }
+
+  const stopSwipeNav = (ev: Event) => {
+    if (inCustomMapPanel(ev.target)) return
+    ev.stopImmediatePropagation()
+  }
+
+  // Prevent Slidev swipe handlers from capturing touch gestures on mobile.
+  // We do not call preventDefault, so Safari native pinch-zoom remains available.
+  document.addEventListener('pointerdown', (ev: PointerEvent) => {
+    if (ev.pointerType === 'touch') stopSwipeNav(ev)
+  }, { capture: true, passive: true })
+  document.addEventListener('pointermove', (ev: PointerEvent) => {
+    if (ev.pointerType === 'touch') stopSwipeNav(ev)
+  }, { capture: true, passive: true })
+  document.addEventListener('pointerup', (ev: PointerEvent) => {
+    if (ev.pointerType === 'touch') stopSwipeNav(ev)
+  }, { capture: true, passive: true })
+
+  document.addEventListener('touchstart', stopSwipeNav, { capture: true, passive: true })
+  document.addEventListener('touchmove', stopSwipeNav, { capture: true, passive: true })
+  document.addEventListener('touchend', stopSwipeNav, { capture: true, passive: true })
+}
+
 function mountMapPanel() {
   if (typeof document === 'undefined') return
 
   ensureMobileZoomEnabled()
+  blockMobileTouchNavigation()
   document.body.classList.add('custom-map-active')
 
   let root = document.getElementById('custom-map-panel')
